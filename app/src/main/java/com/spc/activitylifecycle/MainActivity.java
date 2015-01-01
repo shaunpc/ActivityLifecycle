@@ -18,6 +18,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         tToast("onCreate");
         Log.i(TAG, "onCreate()");
+        // test comment
     }
 
     public void onStart() {
