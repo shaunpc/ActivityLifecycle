@@ -1,14 +1,18 @@
 package com.spc.activitylifecycle;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     public static final String TAG = MainActivity.class.getName();
 
@@ -19,6 +23,30 @@ public class MainActivity extends ActionBarActivity {
         tToast("onCreate");
         Log.i(TAG, "onCreate()");
         // test comment
+
+        PackageManager manager = this.getPackageManager();
+        try {
+            PackageInfo info = manager.getPackageInfo(this.getPackageName(), 0);
+            tToast("PackageName = " + info.packageName + "\nVersionCode = "
+                    + info.versionCode + "\nVersionName = "
+                    + info.versionName + "\nPermissions = "
+                    + info.permissions);
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void toastDeviceInfo (View view) {
+        String manu = Build.MANUFACTURER;
+        String model = Build.MODEL;
+        tToast( "DeviceInfo \n" + manu + "\n" + model);
+    }
+
+    public void toastAndroidInfo(View view) {
+        String release = android.os.Build.VERSION.RELEASE;
+        int sdkVersion = android.os.Build.VERSION.SDK_INT;
+        tToast("AndroidInfo\n" + sdkVersion + "\n" + release);
     }
 
     public void onStart() {
@@ -52,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void onDestroy() {
-        super.onStop();
+        super.onDestroy();
         tToast("onDestroy.");
         Log.i(TAG, "onDestroy()");
     }

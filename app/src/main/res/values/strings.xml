@@ -4,5 +4,6 @@
     <string name="app_name">Activity Lifecycle</string>
     <string name="hello_world">Activity Lifecycle</string>
     <string name="action_settings">Settings</string>
-
+    <string name="info_device">Device Info</string>
+    <string name="info_android">Android Info</string>
 </resources>
