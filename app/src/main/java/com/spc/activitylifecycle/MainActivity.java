@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class MainActivity extends Activity {
 
     public static final String TAG = MainActivity.class.getName();
@@ -30,7 +32,7 @@ public class MainActivity extends Activity {
             tToast("PackageName = " + info.packageName + "\nVersionCode = "
                     + info.versionCode + "\nVersionName = "
                     + info.versionName + "\nPermissions = "
-                    + info.permissions);
+                    + Arrays.toString(info.permissions));
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
